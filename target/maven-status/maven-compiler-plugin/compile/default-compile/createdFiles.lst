@@ -1,0 +1,15 @@
+com\insta\exception\ResourceNotFoundException.class
+com\insta\service\integrations\RemoteService.class
+com\insta\service\integrations\UserRemoteService.class
+com\insta\config\Config.class
+com\insta\entity\UserEntity.class
+com\insta\service\FebanicSeries.class
+com\insta\SimpleRestApiApplication.class
+com\insta\stream\GetEvenKeysFromMap.class
+com\insta\api\WebFluxController.class
+com\insta\api\IntegrationController.class
+com\insta\dto\UserDTO.class
+com\insta\repository\UserRepository.class
+com\insta\WebclientConfig.class
+com\insta\service\UserService.class
+com\insta\api\UserController.class
