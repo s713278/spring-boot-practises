@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,13 @@ import com.srtech.dto.MathRequest;
 import com.srtech.dto.MathResponse;
 import com.srtech.service.MathService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 @RestController
 @RequestMapping("/api/maths")
+@Slf4j
 public class MathsController {
 	
 	@Autowired
@@ -41,6 +45,8 @@ public class MathsController {
 				result1 = t.getNo1()*t.getNo2();
 			}else if("/".equalsIgnoreCase(t.getMathOperator())) {
 				result1 = t.getNo1()/t.getNo2();
+			}else if("-".equalsIgnoreCase(t.getMathOperator())) {
+				result1 = t.getNo1()-t.getNo2();
 			}
 			return result1;
 		};
@@ -48,9 +54,9 @@ public class MathsController {
 		return response;
 	}
 	
-	@GetMapping("/febenacci")
-	public ResponseEntity<List<Integer[]>> getFebanacciSeries(){
-		List<Integer[]>  result = mathService.getFebancciSeries();
+	@GetMapping("/febenacci/{howMany}")
+	public ResponseEntity<List<Integer[]>> getFebanacciSeries(@PathVariable Integer howMany){
+		List<Integer[]>  result = mathService.getFebancciSeries(howMany);
 		return new ResponseEntity<List<Integer[]>>(result,HttpStatus.ACCEPTED);
 	}
 }

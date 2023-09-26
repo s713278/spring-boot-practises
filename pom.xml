@@ -70,6 +70,7 @@
 	<modules>
 		<module>hello-world</module>
 		<module>spring-rest</module>
+		<module>rest_client_demo</module>
 	</modules>
 
 </project>

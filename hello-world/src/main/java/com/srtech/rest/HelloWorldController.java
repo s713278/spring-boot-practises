@@ -13,4 +13,5 @@ public class HelloWorldController {
 	public String hello(@PathVariable String name) {
 		return "Hi !! "+name;
 	}
+
 }
