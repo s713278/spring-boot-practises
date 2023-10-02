@@ -71,6 +71,7 @@
 		<module>hello-world</module>
 		<module>spring-rest</module>
 		<module>rest_client_demo</module>
+		<module>web-client-demo</module>
 	</modules>
 
 </project>
