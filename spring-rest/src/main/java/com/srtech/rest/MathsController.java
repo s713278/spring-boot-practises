@@ -23,15 +23,21 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
-@RequestMapping("/api/maths")
+@RequestMapping("/api")
 @Slf4j
 public class MathsController {
 	
 	@Autowired
 	private MathService mathService;
+	
+	@GetMapping("/hello/{name}")
+	public ResponseEntity<String> hello(@PathVariable String name){
+	//	log.info("message");
+		return new ResponseEntity<String>("Hello !!"+name, HttpStatus.OK);
+	}
 
-	@PostMapping(value="/",produces = MediaType.APPLICATION_JSON_VALUE)
-	public MathResponse hello(@RequestBody MathRequest input) {
+	@PostMapping(value="/maths",produces = MediaType.APPLICATION_JSON_VALUE)
+	public MathResponse maths(@RequestBody MathRequest input) {
 		
 		MathResponse response = new MathResponse();
 		response.setNo1(input.getNo1());
