@@ -54,11 +54,16 @@ class ProductServiceTest {
 	void test_GetProduct_For_Id_1() {
 		Integer productId=1;
 		when(productRepository.findById(productId)).thenReturn(Optional.of(expectedProduct));
+		
 		Product actual= productService.getProduct(productId);
+		
 		assertEquals(expectedProduct, actual);
+		
 		assertEquals(expectedProduct.getId(),actual.getId());
 		assertEquals(expectedProduct.getName(),actual.getName());
 		assertEquals(expectedProduct.getPrice(),actual.getPrice());
+		
+		
 		verify(productRepository,times(1)).findById(productId);
 		//fail("Not yet implemented");
 	}
@@ -79,7 +84,8 @@ class ProductServiceTest {
 	@DisplayName("List All Products")
 	@Test
 	public void test_Get_App_Products() {
-		when(productService.getProducts()).thenReturn(List.of(expectedProduct));
+		when(productRepository.findAll()).thenReturn(List.of(expectedProduct));
+		
 		List<Product> products=productService.getProducts();
 		assertEquals(1, products.size());
 		verify(productRepository,times(1)).findAll();

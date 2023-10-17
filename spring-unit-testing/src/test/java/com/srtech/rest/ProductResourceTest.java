@@ -7,38 +7,40 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.srtech.repository.ProductRepository;
+import com.srtech.entity.Product;
 import com.srtech.service.ProductService;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+//@SpringBootTest
+//@AutoConfigureMockMvc
+@WebMvcTest(controllers =  {ProductResource.class})
 class ProductResourceTest {
 
 	private static final String BASE_URI="/api/products";
+	
 	@Autowired
 	private ProductResource productResource; 
 	
+	private Product expectedProduct;
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
-	@InjectMocks
+	@MockBean
 	private ProductService productService;
 	
-	@Mock
-	private ProductRepository productRepository;
+	//@Mock
+	//private ProductRepository productRepository;
 	
 	@BeforeEach
 	void setUp() throws Exception {
+		expectedProduct=new Product(1,"Apple 12",1400.00);
 	}
 
 	@AfterEach
@@ -54,7 +56,11 @@ class ProductResourceTest {
 
 	@Test
 	void testGetProduct()  throws Exception{
-		mockMvc.perform(MockMvcRequestBuilders.get(BASE_URI+"/1"))
+		
+		//when(productRepository.findById(1)).thenReturn(Optional.of(expectedProduct));
+		//when(productService.getProduct(1)).thenReturn(expectedProduct);
+		
+		mockMvc.perform(MockMvcRequestBuilders.get(BASE_URI+"/{productId}",1))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON));
 	
