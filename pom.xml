@@ -73,6 +73,11 @@
 		<module>rest_client_demo</module>
 		<module>web-client-demo</module>
 		<module>spring-unit-testing</module>
+		
+		<module>spring_security_basics_1</module>
+		<module>spring_security_db_auth_2</module>
+		<module>spring_security_oauth_3</module>
+		<module>spring_wemvc_demo</module>
 	</modules>
 
 </project>
