@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * write-->write
  */
 @SpringBootApplication
-public class SpringSecurityWithCustomDB {
+public class SpringSecurityWithOAuth {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringSecurityWithCustomDB.class, args);
+		SpringApplication.run(SpringSecurityWithOAuth.class, args);
 	}
 
 }

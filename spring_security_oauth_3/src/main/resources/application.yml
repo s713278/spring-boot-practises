@@ -4,9 +4,10 @@ spring:
       client:
         registration:
           github:
-            clientId: 
-            clientSecret: 
+            clientId: Iv1.8b87b7708562d0d1
+            clientSecret: f909fd5d14225e6388581322f5988c42ff2f9dc9
+            redirect-uri: http://localhost:9090/callback
           google:
-            clientId: 
-            client-secret: 
+            clientId: 463520567018-g8oju0rek3lesi4hrff9b3gn2jh794e6.apps.googleusercontent.com
+            client-secret: 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
 # ...
