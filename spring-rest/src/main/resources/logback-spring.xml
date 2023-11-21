@@ -1,0 +1,17 @@
+<configuration>
+    <springProfile name="dev">
+        <!-- Development-specific logging configuration -->
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <root level="debug">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <!-- Production-specific logging configuration -->
+        <!-- Add your production logging configuration here -->
+    </springProfile>
+</configuration>
